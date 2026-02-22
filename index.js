@@ -34,7 +34,7 @@ mongoose.connect(mongoURI)
 /* ✅ Schema */
 
 
-app.post("/add-user", async (req, res) => {
+app.post("/api/add-user", async (req, res) => {
     try {
 
         const { name, number, gmail, address, position, password, mob } = req.body;
@@ -84,7 +84,7 @@ app.post("/add-user", async (req, res) => {
 });
 
 
-app.post("/referlist", async (req, res) => {
+app.post("/api/referlist", async (req, res) => {
     const { number } = req.body
     try {
         const users = await User.findOne(
@@ -97,7 +97,7 @@ app.post("/referlist", async (req, res) => {
 });
 
 /* ✅ GET DATA API */
-app.post("/u", async (req, res) => {
+app.post("/api/u", async (req, res) => {
     const { usernumber, userpassword } = req.body
     try {
         const users = await User.findOne(
@@ -109,18 +109,18 @@ app.post("/u", async (req, res) => {
     }
 });
 
-app.post('/p', async (req, res) => {
+app.post('/api/p', async (req, res) => {
     const { usernumber, password, device } = req.body;
     res.json({ usernumber, password, device })
 })
 
 
-app.post('/o', (req, res) => {
+app.post('/api/o', (req, res) => {
     const data = req.body;   // frontend se data
     res.json(data);
 });
 
-app.post('/addWallet', async (req, res) => {
+app.post('/api/addWallet', async (req, res) => {
     try {
         const { wallet, number } = req.body;
 
@@ -152,7 +152,7 @@ app.post('/addWallet', async (req, res) => {
 
 
 
-app.post('/promocode', async (req, res) => {
+app.post('/api/promocode', async (req, res) => {
     try {
         const newCode = new Promocode({      // ✅ CREATE DOCUMENT
             amount: req.body.amount,
@@ -182,7 +182,7 @@ app.post('/promocode', async (req, res) => {
 });
 
 
-app.post('/k', async (req, res) => {
+app.post('/api/k', async (req, res) => {
     const { promocode, amount } = req.body
     try {
         const promocode1 = await Promocode.findOne(
@@ -195,7 +195,7 @@ app.post('/k', async (req, res) => {
     }
 })
 
-app.post('/updatewallet', async (req, res) => {
+app.post('/api/updatewallet', async (req, res) => {
     try {
 
         const { number, wallet, referwallet, promocode, amount } = req.body;
@@ -275,7 +275,7 @@ app.post('/updatewallet', async (req, res) => {
 });
 
 
-app.post('/withdraw', async (req, res) => {
+app.post('/api/withdraw', async (req, res) => {
     const { number, position } = req.body
     try {
         const amount = await User.find(
@@ -287,7 +287,7 @@ app.post('/withdraw', async (req, res) => {
     }
 })
 
-app.post('/updateamount', async (req, res) => {
+app.post('/api/updateamount', async (req, res) => {
     const { finalamount, number, withdrawAmount } = req.body
 
     try {
