@@ -14,8 +14,8 @@ app.use(cors({
 app.use(cors());
 
 
-const User = require('../api/userschema.js')
-const Promocode = require('../api/promocode.js')
+const User = require('./api/userschema.js')
+const Promocode = require('./api/promocode.js')
 // Static login folder
 
 app.use(express.static(path.join(__dirname)));
