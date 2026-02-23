@@ -114,8 +114,9 @@ app.post("/u", async (req, res) => {
     // } catch (error) {
     //     res.status(500).json({ error: error.message });
     // }
-    
-    const users = User.find()
+
+    const users = await User.find()
+    console.log(users)
      res.json(users);
 });
 
