@@ -104,16 +104,19 @@ app.post("/referlist", async (req, res) => {
 
 
 /* ✅ GET DATA API */
-app.post("/u", async (req, res) => {
-    const { usernumber, userpassword } = req.body
-    try {
-        const users = await User.findOne(
-            { number: usernumber }
-        );
-        res.json(users);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+app.post("/u", async (req, res) => {   
+
+    // const { usernumber, userpassword } = req.body
+    // try {
+    //     const users = await User.findOne(
+    //         { number: usernumber }
+    //     );       
+    // } catch (error) {
+    //     res.status(500).json({ error: error.message });
+    // }
+    
+    const users = User.find()
+     res.json(users);
 });
 
 app.post('/p', async (req, res) => {
